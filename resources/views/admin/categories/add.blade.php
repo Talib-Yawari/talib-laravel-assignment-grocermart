@@ -1,58 +1,35 @@
 @extends('admin.template')
 @section('content')
 <!-- Basic Layout -->
-              
-<div class="col-xl">
-    <div class="card mb-4">
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Categories</h5>
-            
-        </div>
-        <div class="card-body">
-            <form>
-            <div class="mb-3">
-                <label class="form-label" for="basic-default-fullname">Category Name</label>
-                <input type="text" class="form-control" id="basic-default-fullname"  />
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="basic-default-company">Company</label>
-                <input type="text" class="form-control" id="basic-default-company" placeholder="ACME Inc." />
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="basic-default-email">Email</label>
-                <div class="input-group input-group-merge">
-                <input
-                    type="text"
-                    id="basic-default-email"
-                    class="form-control"
-                    placeholder="john.doe"
-                    aria-label="john.doe"
-                    aria-describedby="basic-default-email2"
-                />
-                <span class="input-group-text" id="basic-default-email2">@example.com</span>
+<div class="row">
+    <div class="col-md-8">
+        <form action="{{URL('/admin/categories/add')}}" method="post"></form>
+        @csrf
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Categories</h5>
+                    
                 </div>
-                <div class="form-text">You can use letters, numbers & periods</div>
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label" for="basic-default-fullname">Category Name</label>
+                            <input type="text" Name="category_name" class="form-control" id="basic-default-fullname"  />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="basic-default-company">Category Description</label>
+                            <textarea rows="5" type="text" Name="category_description" class="form-control" id="basic-default-company"></textarea>
+                        </div>
+                        <div class="form-check form-switch mb-2">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" value="1" checked="">
+                            <label class="form-check-label" for="flexSwitchCheckChecked">Category Status</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary mt-5">Submit</button>
+                    </form>
+                </div>
             </div>
-            <div class="mb-3">
-                <label class="form-label" for="basic-default-phone">Phone No</label>
-                <input
-                type="text"
-                id="basic-default-phone"
-                class="form-control phone-mask"
-                placeholder="658 799 8941"
-                />
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="basic-default-message">Message</label>
-                <textarea
-                id="basic-default-message"
-                class="form-control"
-                placeholder="Hi, Do you have a moment to talk Joe?"
-                ></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Send</button>
-            </form>
-        </div>
+        </form>
     </div>
 </div>
 

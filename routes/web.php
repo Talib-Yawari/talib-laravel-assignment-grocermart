@@ -21,6 +21,8 @@ Route::get('/admin/login', [LoginController::class, 'login']);
 Route::get('/admin/dashboard', [DashboardController::class, 'dashboard']);
 Route::get('/admin/categories', [CategoriesController::class, 'categories']);
 Route::get('/admin/categories/add', [CategoriesController::class, 'add']);
+Route::post('/admin/categories/add', [CategoriesController::class, 'create']);
+
 
 
 //WEBSITE ROUTES

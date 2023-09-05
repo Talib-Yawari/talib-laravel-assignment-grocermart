@@ -14,4 +14,8 @@ class CategoriesController extends Controller
    public function add() {
     return view('admin.categories.add'); 
    }
+
+   public function create(Request $request) {
+    dd($request);
+   }
 }
