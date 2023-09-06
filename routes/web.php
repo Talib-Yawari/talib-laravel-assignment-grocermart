@@ -25,6 +25,7 @@ Route::post('/admin/categories/add', [CategoriesController::class, 'create']);
 
 
 
+
 //WEBSITE ROUTES
 Route::get('/', [WebsiteController::class, 'home']);
 Route::get('/shop', [WebsiteController::class, 'shop']);

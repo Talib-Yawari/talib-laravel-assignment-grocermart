@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Categories;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
 {
    public function categories() {
-    return view('admin.categories.list');
+    $Categories = Categories::all();
+    return view('admin.categories.list')->with('Categories', $Categories);
    } 
 
    public function add() {
@@ -16,6 +18,14 @@ class CategoriesController extends Controller
    }
 
    public function create(Request $request) {
-    dd($request);
+    // dd($request->input('category_name'));
+    $category = new Categories;
+    $category->name = $request->input('category_name');
+    $category->description = $request->input('category_description');
+    $category->isActive = $request->input('category_status') ? "1" : "0";
+    $category->save();
+
+    return redirect('/admin/categories');
+
    }
 }
