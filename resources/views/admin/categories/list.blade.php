@@ -26,7 +26,7 @@
             </tr>
         </thead>
         <tbody class="table-border-bottom-0">
-            @foreach($Categories as $category) <!-- Use the variable name $Categories -->
+            @foreach($Categories as $category)
                 <tr>
                     <td>{{$category->id}}</td>
                     <td>{{$category->name}}</td>
@@ -38,7 +38,19 @@
                         @endif
                     </td>
                     <td>
-                        <!-- Add actions for each category here -->
+                        <div class="dropdown">
+                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                              <i class="bx bx-dots-vertical-rounded"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item" href="{{URL('/admin/categories/edit/'.$category->id )}}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                <form action="{{URL('/admin/categories/delete/'.$category->id)}}" method="post">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button type="submit" class="dropdown-item" ><i class="bx bx-trash me-1"></i> Delete</button>
+                                </form>
+                            </div>
+                        </div>
                     </td>
                 </tr>
             @endforeach

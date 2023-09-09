@@ -19,12 +19,14 @@ use Illuminate\Support\Facades\Route;
 //ADMIN ROUTES
 Route::get('/admin/login', [LoginController::class, 'login']);
 Route::get('/admin/dashboard', [DashboardController::class, 'dashboard']);
+
+//CATEGORIES ROUTES
 Route::get('/admin/categories', [CategoriesController::class, 'categories']);
 Route::get('/admin/categories/add', [CategoriesController::class, 'add']);
 Route::post('/admin/categories/add', [CategoriesController::class, 'create']);
-
-
-
+Route::get('/admin/categories/edit/{id}', [CategoriesController::class, 'edit']);
+Route::put('/admin/categories/edit/{id}', [CategoriesController::class, 'update']);
+Route::delete('/admin/categories/delete/{id}', [CategoriesController::class, 'delete']);
 
 //WEBSITE ROUTES
 Route::get('/', [WebsiteController::class, 'home']);
@@ -35,3 +37,4 @@ Route::get('/shopping-cart', [WebsiteController::class, 'shoppingCart']);
 Route::get('/checkout', [WebsiteController::class, 'checkOut']);
 Route::get('/blog-details', [WebsiteController::class, 'blogDetails']);
 Route::get('/blog', [WebsiteController::class, 'blog']);
+
