@@ -24,11 +24,14 @@
             <th>Status</th>
             <th>Actions</th>  
             </tr>
-        </thead>
+        </thead> 
         <tbody class="table-border-bottom-0">
+            @php
+                $count = 1;
+            @endphp
             @foreach($Categories as $category)
                 <tr>
-                    <td>{{$category->id}}</td>
+                    <td>{{$count}}</td>
                     <td>{{$category->name}}</td>
                     <td>
                         @if($category->isActive == "1")
@@ -43,8 +46,9 @@
                               <i class="bx bx-dots-vertical-rounded"></i>
                             </button>
                             <div class="dropdown-menu">
-                              <a class="dropdown-item" href="{{URL('/admin/categories/edit/'.$category->id )}}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                                <form action="{{URL('/admin/categories/delete/'.$category->id)}}" method="post">
+                              <a class="dropdown-item"  href="{{URL('/admin/categories/edit/'.$category->id )}}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                <form class="delete" action= "{{URL('/admin/categories/delete/'.$category->id)}}" method="post">
+                                    
                                     @method('DELETE')
                                     @csrf
                                     <button type="submit" class="dropdown-item" ><i class="bx bx-trash me-1"></i> Delete</button>
@@ -53,6 +57,9 @@
                         </div>
                     </td>
                 </tr>
+                @php    
+                    $count++;              
+                @endphp
             @endforeach
         </tbody>
         </table>

@@ -54,7 +54,10 @@ class CategoriesController extends Controller
    }
 
    public function delete(Request $request) {
-        dd($request->id);
+        Categories::where('id', $request->id)->delete();
+
+        Session::flash('message', "Category Deleted Successfully");
+          return redirect('/admin/categories');
    }
    
 }

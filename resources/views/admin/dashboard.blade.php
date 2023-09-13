@@ -49,7 +49,7 @@
                     /> -->
                 </div> 
                 <span class="fw-semibold d-block mb-1">Orders</span>
-                <h3 class="card-title mb-2">0</h3>
+                <h3 class="card-title mb-2">{{count($categories)}}</h3>
             </div>
         </div>
     </div>
